@@ -1,6 +1,6 @@
-﻿using Bookstore.Domain.Customers;
-using System.Data.Entity;
+using Bookstore.Domain.Customers;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bookstore.Data.Repositories
 {
@@ -15,7 +15,7 @@ namespace Bookstore.Data.Repositories
 
         async Task ICustomerRepository.AddAsync(Customer customer)
         {
-            await Task.Run(() => dbContext.Customer.Add(customer));
+            await dbContext.Customer.AddAsync(customer);
         }
 
         async Task<Customer> ICustomerRepository.GetAsync(int id)
